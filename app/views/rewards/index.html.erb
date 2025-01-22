@@ -1,2 +1,11 @@
-<h1>Rewards#index</h1>
-<p>Find me in app/views/rewards/index.html.erb</p>
+<% @rewards.each do |reward| %>
+  作成者：<%= reward.user.email %>
+  <br />
+  <%= reward.completiondate %>に　
+  <%= reward.location %>で　
+  <%= reward.content %>する
+  <br />
+  <br />
+<% end %>
+
+<%= paginate @rewards %>
