@@ -20,7 +20,7 @@ class RewardsController < ApplicationController
     @reward = current_user.rewards.new(reward_params)
 
     if @reward.save
-      redirect_to reward_url(@reward), notice: 'ご褒美の登録に成功！'
+      redirect_to rewards_path, notice: 'ご褒美の登録に成功！'
     else
       render :new, status: :unprocessable_entity
     end
