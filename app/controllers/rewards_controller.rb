@@ -1,4 +1,6 @@
 class RewardsController < ApplicationController
+  before_action :set_reward, only: %i[edit update]
+
   def index
     @rewards = Reward.order(completiondate: :asc).page(params[:page]).per(3)
   end
@@ -24,10 +26,21 @@ class RewardsController < ApplicationController
     end
   end
 
+  def update
+    if @reward.update(reward_params)
+      redirect_to rewards_path, notice: 'ご褒美の編集に成功！'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   private
 
   def reward_params
     params.require(:reward).permit(:completiondate ,:content ,:location)
+  end
+
+  def set_reward
+    @reward = current_user.rewards.find(params[:id])
   end
 end
