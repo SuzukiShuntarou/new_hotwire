@@ -1,21 +1,23 @@
-<%= form_with(model: reward) do |form| %>
- <div>
-    <%= form.label :completiondate, style: "display: block" %>
-    <%= form.date_field :completiondate, value: reward.completiondate %>
-  </div>
-
+<%= turbo_frame_tag reward do %>
+  <%= form_with(model: reward) do |form| %>
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_area :location %>
-  </div>
+      <%= form.label :completiondate, style: "display: block" %>
+      <%= form.date_field :completiondate, value: reward.completiondate %>
+    </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
+    <div>
+      <%= form.label :location, style: "display: block" %>
+      <%= form.text_area :location %>
+    </div>
+
+    <div>
+      <%= form.label :content, style: "display: block" %>
+      <%= form.text_area :content %>
+    </div>
 
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
