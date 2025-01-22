@@ -1,5 +1,5 @@
 class RewardsController < ApplicationController
-  before_action :set_reward, only: %i[edit update]
+  before_action :set_reward, only: %i[edit update destroy]
 
   def index
     @rewards = Reward.order(completiondate: :asc).page(params[:page]).per(3)
@@ -32,6 +32,12 @@ class RewardsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @reward.destroy
+
+    redirect_to rewards_path, notice: 'ご褒美の削除に成功！'
   end
 
   private
