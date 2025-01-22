@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <% @rewards.each do |reward| %>
+  <%= turbo_frame_tag reward do %>
   作成者：<%= reward.user.email %>
   <br />
   <%= reward.completiondate %>に　
@@ -10,6 +11,7 @@
   <%= button_to "削除", reward, method: :delete %>
   <br />
   <br />
+  <% end %>
 <% end %>
 
 <%= paginate @rewards %>

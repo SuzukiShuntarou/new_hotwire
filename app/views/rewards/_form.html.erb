@@ -1,3 +1,4 @@
+<%= turbo_frame_tag reward do %>
 <%= form_with(model: reward) do |form| %>
  <div>
     <%= form.label :completiondate, style: "display: block" %>
@@ -18,4 +19,5 @@
   <div>
     <%= form.submit %>
   </div>
+<% end %>
 <% end %>
