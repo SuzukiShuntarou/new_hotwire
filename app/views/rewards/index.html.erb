@@ -2,15 +2,15 @@
 
 <% @rewards.each do |reward| %>
   <%= turbo_frame_tag reward do %>
-  作成者：<%= reward.user.email %>
-  <br />
-  <%= reward.completiondate %>に　
-  <%= reward.location %>で　
-  <%= reward.content %>する
-  <%= link_to "編集", edit_reward_path(reward) %>
-  <%= button_to "削除", reward, method: :delete %>
-  <br />
-  <br />
+    作成者：<%= reward.user.email %>
+    <br />
+    <%= reward.completiondate %>に　
+    <%= reward.location %>で　
+    <%= reward.content %>する
+    <%= link_to "編集", edit_reward_path(reward) %>
+    <%= button_to "削除", reward, method: :delete %>
+    <br />
+    <br />
   <% end %>
 <% end %>
 
