@@ -1,9 +1,7 @@
-<%= form_with(model: goal) do |form| %>
-  <%= form.label :content, style: "display: block" %>
-  <%= form.text_area :content %>
-
-  <%= form.label :progress, style: "display: block" %>
-  <%= form.number_field :progress %>
-
-  <%= form.submit %>
+<%= turbo_frame_tag goal do %>
+  <%= bootstrap_form_with(model: goal, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.number_field :progress %>
+    <%= form.submit %>
+  <% end %>
 <% end %>
