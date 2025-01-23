@@ -20,7 +20,7 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.new(goal_params)
 
     if @goal.save
-      redirect_to goals_path, notice: 'ご褒美の登録に成功！'
+      redirect_to goals_path, notice: '目標の登録に成功！'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
 
   def update
     if @goal.update(goal_params)
-      flash.now.notice = 'ご褒美の編集に成功！'
+      flash.now.notice = '目標の編集に成功！'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
 
-    redirect_to goals_path, notice: 'ご褒美の削除に成功！'
+    redirect_to goals_path, notice: '目標の削除に成功！'
   end
 
   private
