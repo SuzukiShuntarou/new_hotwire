@@ -28,7 +28,7 @@ class RewardsController < ApplicationController
 
   def update
     if @reward.update(reward_params)
-      redirect_to @reward, notice: 'ご褒美の編集に成功！'
+      # redirect_to @reward, notice: 'ご褒美の編集に成功！'
     else
       render :edit, status: :unprocessable_entity
     end

@@ -1,20 +1,8 @@
 <%= turbo_frame_tag reward do %>
   <%= bootstrap_form_with(model: reward, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
-    <div>
       <%= form.date_field :completiondate, value: reward.completiondate %>
-    </div>
-
-    <div>
       <%= form.text_area :location %>
-    </div>
-
-    <div>
       <%= form.text_area :content %>
-    </div>
-
-
-    <div>
       <%= form.submit %>
-    </div>
   <% end %>
 <% end %>
