@@ -1,0 +1,9 @@
+<%= form_with(model: goal) do |form| %>
+  <%= form.label :content, style: "display: block" %>
+  <%= form.text_area :content %>
+
+  <%= form.label :progress, style: "display: block" %>
+  <%= form.number_field :progress %>
+
+  <%= form.submit %>
+<% end %>
