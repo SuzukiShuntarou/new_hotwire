@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :rewards, dependent: :destroy
   has_many :goals, dependent: :destroy
+
+  has_many :new_rewards, dependent: :destroy
+  has_many :new_goals, dependent: :destroy
 end
