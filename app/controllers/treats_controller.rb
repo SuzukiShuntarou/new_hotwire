@@ -1,0 +1,53 @@
+class TreatsController < ApplicationController
+  before_action :set_treat, only: %i[edit update destroy]
+
+  def index
+    @treats = Treat.order(completiondate: :asc).page(params[:page]).per(3)
+  end
+
+  def show
+    @treat = Treat.find(params[:id])
+  end
+
+  def new
+    @treat = current_user.treats.new
+  end
+
+  def edit
+  end
+
+  def create
+    @treat = current_user.treats.new(treat_params)
+
+    if @treat.save
+      redirect_to treats_path, notice: 'ご褒美の登録に成功！'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @treat.update(treat_params)
+      redirect_to treats_path, notice: 'ご褒美の編集に成功！'
+      # flash.now.notice = 'ご褒美の編集に成功！'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @treat.destroy
+
+    redirect_to treats_path, notice: 'ご褒美の削除に成功！'
+  end
+
+  private
+
+  def treat_params
+    params.require(:treat).permit(:completiondate ,:content ,:location)
+  end
+
+  def set_treat
+    @treat = current_user.treats.find(params[:id])
+  end
+end

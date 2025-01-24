@@ -1,0 +1,16 @@
+<h1>Treats#index</h1>
+
+<% @treats.each do |treat| %>
+  作成者：<%= treat.user.email %>
+  <br />
+  <%= treat.completiondate %>に　
+  <%= treat.location %>で　
+  <%= treat.content %>する
+  <%= link_to "編集", edit_treat_path(treat) %>
+  <%= button_to "削除", treat, method: :delete %>
+  <br />
+  <br />
+<% end %>
+
+<%= paginate @treats %>
+<%= link_to "新規作成", new_treat_path %>
