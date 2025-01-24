@@ -1,16 +1,21 @@
 <h1>Treats#index</h1>
 
 <% @treats.each do |treat| %>
+  <br />
   作成者：<%= treat.user.email %>
   <br />
   <%= treat.completiondate %>に　
-  <%= treat.location %>で　
-  <%= treat.content %>する
-  <%= link_to "編集", edit_treat_path(treat) %>
-  <%= button_to "削除", treat, method: :delete %>
-  <br />
+  <%= link_to treat.location, treat_path(treat.id) %>で　
+  <%= treat.content %>する　
+
+  <% treat.marks.each do |mark| %>
+    <% if treat.user_id == mark.user_id %>
+      進捗率：<%= mark.progress %>%
+    <% end %>
+  <% end %>
   <br />
 <% end %>
 
 <%= paginate @treats %>
+<br />
 <%= link_to "新規作成", new_treat_path %>

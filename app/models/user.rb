@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
 
   has_many :treats, dependent: :destroy
-  has_many :completes, dependent: :destroy
+  has_many :marks, dependent: :destroy
 end

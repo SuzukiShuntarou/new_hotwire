@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :goals
 
   resources :treats
+  resources :marks
   # Defines the root path route ("/")
   # root "posts#index"
 end

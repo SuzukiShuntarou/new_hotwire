@@ -1,5 +1,16 @@
 <h1>Treats#show</h1>
 
-<%= @treat.completiondate %>に
-<%= @treat.location %>で
+<br />
+ご褒美：
+<%= @treat.completiondate %>に　
+<%= @treat.location %>で　
 <%= @treat.content %>する
+<%= link_to "編集", edit_treat_path(@treat) %>
+
+<br /><br />
+
+<% @marks.each do |mark| %>
+  目標：<%= mark.content %>
+  進捗率：<%= mark.progress %>%
+  <%= link_to "編集", edit_mark_path(mark) %>
+<% end %>
