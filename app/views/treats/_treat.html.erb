@@ -1,0 +1,10 @@
+<%= turbo_frame_tag treat do %>
+  <p style="color: green"><%= notice %></p>
+  ご褒美：
+  <%= treat.completiondate %>に　
+  <%= treat.location %>で　
+  <%= treat.content %>する
+  <%= link_to "編集", edit_treat_path(treat), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+<% end %>
+  <%= button_to "削除", treat, method: :delete, class: "btn btn-sm btn-outline-danger", data: { turbo_confirm: "削除しますか？" } %>
+  

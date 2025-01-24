@@ -31,8 +31,7 @@ class TreatsController < ApplicationController
 
   def update
     if @treat.update(treat_params)
-      redirect_to treat_path(@treat), notice: 'ご褒美の編集に成功！'
-      # flash.now.notice = 'ご褒美の編集に成功！'
+      flash.now.notice = 'ご褒美の編集に成功！'
     else
       render :edit, status: :unprocessable_entity
     end

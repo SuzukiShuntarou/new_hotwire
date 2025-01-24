@@ -1,2 +1,4 @@
 <h1>Treats#edit</h1>
-<%= render "form", treat: @treat %>
+<%= render "modal", title: "ご褒美の編集" do %>
+  <%= render "form", treat: @treat %>
+<% end %>

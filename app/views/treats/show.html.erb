@@ -1,11 +1,9 @@
 <h1>Treats#show</h1>
 
 <br />
-ご褒美：
-<%= @treat.completiondate %>に　
-<%= @treat.location %>で　
-<%= @treat.content %>する
-<%= link_to "編集", edit_treat_path(@treat) %>
+<div id='treat'>
+  <%= render @treat %>
+</div>
 
 <br /><br />
 

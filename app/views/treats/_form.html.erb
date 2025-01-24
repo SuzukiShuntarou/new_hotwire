@@ -1,12 +1,8 @@
-<%= form_with(model: treat) do |form| %>
-  <%= form.label :completiondate, style: "display: block" %>
-  <%= form.date_field :completiondate, value: treat.completiondate %>
-
-  <%= form.label :location, style: "display: block" %>
-  <%= form.text_area :location %>
-
-  <%= form.label :content, style: "display: block" %>
-  <%= form.text_area :content %>
-
-  <%= form.submit %>
- <% end %>
+ <%= turbo_frame_tag treat do %>
+  <%= bootstrap_form_with(model: treat, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
+      <%= form.date_field :completiondate, value: treat.completiondate %>
+      <%= form.text_area :location %>
+      <%= form.text_area :content %>
+      <%= form.submit %>
+  <% end %>
+<% end %>
