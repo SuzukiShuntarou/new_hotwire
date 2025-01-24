@@ -8,7 +8,7 @@
 <br /><br />
 
 <% @marks.each do |mark| %>
-  目標：<%= mark.content %>
-  進捗率：<%= mark.progress %>%
-  <%= link_to "編集", edit_mark_path(mark) %>
+  <div id="<%= dom_id(mark) %>">
+    <%= render 'marks/mark', mark: mark %>
+  </div>
 <% end %>

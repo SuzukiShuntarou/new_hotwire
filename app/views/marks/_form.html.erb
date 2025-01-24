@@ -1,9 +1,7 @@
-<%= form_with(model: mark) do |form| %>
-  <%= form.label :content, style: "display: block" %>
-  <%= form.text_area :content %>
-
-  <%= form.label :content, style: "display: block" %>
-  <%= form.number_field :progress %>
-
-  <%= form.submit %>
+<%= turbo_frame_tag mark do %>
+  <%= bootstrap_form_with(model: mark, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.number_field :progress %>
+    <%= form.submit %>
+  <% end %>
 <% end %>

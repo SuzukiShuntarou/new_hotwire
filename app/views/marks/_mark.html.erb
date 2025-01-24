@@ -1,0 +1,6 @@
+<%= turbo_frame_tag mark do %>
+  <p style="color: green"><%= notice %></p>
+  目標：<%= mark.content %>
+  進捗率：<%= mark.progress %>%
+  <%= link_to "編集", edit_mark_path(mark), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+<% end %>
