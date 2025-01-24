@@ -1,5 +1,5 @@
 class MarksController < ApplicationController
-  before_action :set_treat, only: %i[edit update]
+  before_action :set_mark, only: %i[edit update]
 
   def index
   end
@@ -26,7 +26,7 @@ class MarksController < ApplicationController
     params.require(:mark).permit(:content ,:progress)
   end
 
-  def set_treat
+  def set_mark
     @mark = current_user.marks.find(params[:id])
   end
 end
