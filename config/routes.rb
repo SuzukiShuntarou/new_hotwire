@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show]
   resources :rewards
+  resources :goals
   # Defines the root path route ("/")
   # root "posts#index"
 end
