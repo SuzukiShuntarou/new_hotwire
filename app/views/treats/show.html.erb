@@ -1,0 +1,14 @@
+<h1>Treats#show</h1>
+
+<br />
+<div id='treat'>
+  <%= render @treat %>
+</div>
+
+<br /><br />
+
+<% @marks.each do |mark| %>
+  <div id="<%= dom_id(mark) %>">
+    <%= render 'marks/mark', mark: mark %>
+  </div>
+<% end %>

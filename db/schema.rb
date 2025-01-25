@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_23_125151) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_24_051835) do
+  create_table "completes", force: :cascade do |t|
+    t.text "content"
+    t.integer "progress"
+    t.integer "user_id", null: false
+    t.integer "reward_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reward_id"], name: "index_completes_on_reward_id"
+    t.index ["user_id"], name: "index_completes_on_user_id"
+  end
+
   create_table "goals", force: :cascade do |t|
     t.text "content"
     t.integer "progress"
@@ -18,6 +29,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_23_125151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "marks", force: :cascade do |t|
+    t.text "content"
+    t.integer "progress"
+    t.integer "user_id", null: false
+    t.integer "treat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["treat_id"], name: "index_marks_on_treat_id"
+    t.index ["user_id"], name: "index_marks_on_user_id"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -28,6 +50,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_23_125151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rewards_on_user_id"
+  end
+
+  create_table "treats", force: :cascade do |t|
+    t.date "completiondate"
+    t.text "content"
+    t.text "location"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_treats_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +75,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_23_125151) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "completes", "rewards"
+  add_foreign_key "completes", "users"
   add_foreign_key "goals", "users"
+  add_foreign_key "marks", "treats"
+  add_foreign_key "marks", "users"
   add_foreign_key "rewards", "users"
+  add_foreign_key "treats", "users"
 end

@@ -1,0 +1,33 @@
+<h1>Treats#new</h1>
+
+<%= form_with(model: @treat) do |form| %>
+
+  <% if @treat.errors.any? %>
+    <div style="color: red">
+    <ul>
+      <% @treat.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :期日, style: "display: block" %>
+  <%= form.date_field :completiondate, value: @treat.completiondate %>
+
+  <%= form.label :場所, style: "display: block" %>
+  <%= form.text_area :location %>
+
+  <%= form.label :ご褒美, style: "display: block" %>
+  <%= form.text_area :content %>
+
+    <%= form.fields_for :marks do |mark_form| %>
+      <%= mark_form.label :content, '目標', style: "display: block" %>
+      <%= mark_form.text_area :content %>
+  
+      <%= mark_form.label :progress, '進捗率', style: "display: block" %>
+      <%= mark_form.number_field :progress %>
+    <% end %>
+
+  <%= form.submit %>
+<% end %>
