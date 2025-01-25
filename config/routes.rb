@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :marks
   # Defines the root path route ("/")
   # root "posts#index"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener" 
+  end
 end
