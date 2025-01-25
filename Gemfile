@@ -61,3 +61,4 @@ end
 gem 'devise'
 gem 'kaminari'
 gem "bootstrap_form", "~> 5.4"
+gem 'devise_invitable'
