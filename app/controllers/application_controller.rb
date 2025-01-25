@@ -23,5 +23,14 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    # 招待用パラメータ
+    devise_parameter_sanitizer.permit(:invite) do |u|
+      u.permit(:email, :treat_id)
+    end
+    
+    # 招待を承認する際のパラメータ
+    devise_parameter_sanitizer.permit(:accept_invitation) do |u|
+      u.permit(:password, :password_confirmation, :invitation_token, :name, :treat_id)
+    end
   end
 end
